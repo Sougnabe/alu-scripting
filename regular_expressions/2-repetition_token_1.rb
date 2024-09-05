@@ -3,4 +3,4 @@
 input = ARGV[0]
 
 #checks matches
-puts input.scan(/h(t|bt)n/).join
+puts input.scan(/h[t|bt]n/).join
