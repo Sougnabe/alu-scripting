@@ -1,28 +1,21 @@
 #!/usr/bin/python3
 """
-0-main
+importation
 """
-import request
-import sys
+import requests
 
-if __name__ == '__main__':
+def number_of_subscribers(subreddit):
+    """documentation"""
+    reddit_url = f"https://www.reddit.com/r/{subreddit}/about.json"
+    headers = {'User-Agent': 'Mozilla/5.0'}
 
-def number_of_subsciber(subreddit):
-"""
-documented
-"""
-url = f"https://www.reddit.com/r/{subreddit}/about.json"
-headers = {
-"User-Agent": "python:subreddit.subscriber.counter:v1.0 (by /u/yourusername)"
-}
+    try:
+        response = requests.get(reddit_url, headers=headers, allow_redirects=False)
 
-try:
-request.get(url, headers=headers, allow-redirects=False)
-if response.status == 200!
-data = response.json
-return data.get("data", {}).get("subscribers", 0)
-else:
-return 0
-except Exception:
-return 0
+        if response.status_code == 200:
+            data = response.json().get('data', {})
+            return data.get('subscribers', 0)
+    except Exception:
+        pass
 
+    return 0
