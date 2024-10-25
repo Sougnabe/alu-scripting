@@ -1,21 +1,20 @@
 #!/usr/bin/python3
-"""
-importation
-"""
+"""DOC"""
 import requests
 
+
 def number_of_subscribers(subreddit):
-    """documentation"""
-    reddit_url = f"https://www.reddit.com/r/{subreddit}/about.json"
-    headers = {'User-Agent': 'Mozilla/5.0'}
-"""try it """
-    try:
-        response = requests.get(reddit_url, headers=headers, allow_redirects=False)
+    """DOC"""
+    reddit_url = "https://www.reddit.com/r/{}/about.json" \
+        .format(subreddit)
 
-        if response.status_code == 200:
-            data = response.json().get('data', {})
-            return data.get('subscribers', 0)
-    except Exception:
-        pass
+    header = {'User-agent': 'Mozilla/5.0'}
+    response = requests.get(reddit_url,
+                            headers=header
+                            )
 
+    if response.status_code == 200:
+        data = response.json()['data']
+        subs = data['subscribers']
+        return subs
     return 0
