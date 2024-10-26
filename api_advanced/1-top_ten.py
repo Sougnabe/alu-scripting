@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-'''Importation '''
+"""Importation."""
 import requests
 
 def top_ten(subreddit):
